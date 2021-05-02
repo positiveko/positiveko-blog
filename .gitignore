@@ -69,3 +69,6 @@ yarn-error.log
 .yarn-integrity
 
 .netlify/
+
+package-lock.json
+.vscode

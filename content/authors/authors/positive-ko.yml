@@ -1,0 +1,10 @@
+name: Positive Ko
+bio: |
+  안녕하세요, 프론트엔드 개발자 고은정입니다.
+avatar: ./avatars/edieko.jpeg
+social:
+  - url: https://github.com/positiveko
+  - url: https://www.instagram.com/edie_ko/
+  - url: https://velog.io/@edie_ko
+  - url: https://www.pinterest.co.kr/spark1er/
+featured: true
