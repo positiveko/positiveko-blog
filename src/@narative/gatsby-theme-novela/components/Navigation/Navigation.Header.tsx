@@ -119,7 +119,7 @@ const NavigationHeader: React.FC<{}> = () => {
               <Icons.ChevronLeft fill={fill} />
             </BackArrowIconContainer>
           )}
-          <Logo>Positive Ko</Logo>
+          <Logo fill={fill}>Positive Ko</Logo>
           <Hidden>Navigate back to the homepage</Hidden>
         </LogoLink>
         <NavControls>
@@ -162,11 +162,11 @@ const BackArrowIconContainer = styled.div`
   `}
 `;
 
-const Logo = styled.div`
+const Logo = styled.div<{ fill: string }>`
 font-family: 'Merriweather',Georgia,Serif;
 font-size: 21px;
 font-weight: bold;
-color: black;
+color: ${({fill})=>fill};
 `
 
 const NavContainer = styled.div`
