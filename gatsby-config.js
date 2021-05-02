@@ -1,11 +1,11 @@
 module.exports = {
   siteMetadata: {
-    title: `Blog | Positive Ko`,
+    title: `Positive Ko | Blog`,
     name: `Positive Ko`,
     siteUrl: `https://novela.narative.co`,
-    description: `요행을 바라지 않는 개발자가 될게요`,
+    description: `스스로 얼마나 부족한지 고해성사하는 주니어 개발자의 회고 블로그.`,
     hero: {
-      heading: `Positive Ko Blog`,
+      heading: `虎視牛行 | 호시우행`,
       maxWidth: 652,
     },
     social: [
