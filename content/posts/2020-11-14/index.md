@@ -3,19 +3,31 @@ title: Think | 요행을 바라지 않는 개발자
 author: Positive Ko
 date: 2020-11-14
 hero: ./images/hero.jpg
-excerpt: With the growing community interest in Gatsby, we hope to create more resources that make it easier for anyone to grasp the power of this incredible tool.
+excerpt: 개발을 처음 시작했을 때 작성한 글입니다.
 ---
+
+원문은 [벨로그](https://velog.io/@edie_ko/Think-%EC%98%88%EB%B9%84-%EA%B0%9C%EB%B0%9C%EC%9E%90-%EC%9D%B8%EC%83%9D-%ED%95%9C-%EB%8B%AC-%ED%9A%8C%EA%B3%A0%EB%A1%9D)에 있습니다.
+
+
+
 
 *늦지 않은 시기에 한 번쯤은 생각을 정리하고 싶었는데 위코드 생활 한 달을 맞이하여 용기를 내어봅니다. 왜 개발자가 되려 하는지, 어떻게 공부하고 있는지, 그리고 앞으로의 다짐을 담은 개인적인 글입니다.*
 
 
 
-![](https://images.velog.io/images/edie_ko/post/a46e4f41-82b8-476e-b456-f52989d6fa59/image.png)
+<div className="Image__Small">
+  <img
+    src="https://images.velog.io/images/edie_ko/post/356e310e-9ad4-437c-93e3-254f3b8cc7a7/image.png"
+    title="Logo Title Text 1"
+    alt="Alt text"
+  />
+</div>
 
 _(요즘 근황.jpg)_
-<br>
-<br>
-## **왜 개발자가 되려고 하나?**
+<br />
+<br />
+
+## 왜 개발자가 되려고 하나?
 
 ### 기 起
 
@@ -40,19 +52,30 @@ _(요즘 근황.jpg)_
 ### 결 結
 
 **굽이 굽이 돌아 개발자의 길로 왔다.** 지금은 >wecode에서 예비 개발자로서 또 다른 기승전결을 준비하고 있다. 
-<br>
-<br>
-## **왜 프론트엔드 개발자?**
+<br />
+<br />
+
+## 왜 프론트엔드 개발자?
 
 백엔드 개발자인 오빠의 의견 20 : 내 마음 80이었다. 처음에 오빠에게 ‘개발자는 결코 쉬운 업이 아니라며 성향이 맞지 않으면 개발자를 권하지 않는다’는 설교를 몇 번이고 들었다. 그러던 오빠도 이내 석연찮지만 ‘그렇다면 너는 프론트엔드가 맞을 것 같다’는 말을 하게 된다. 사실 나의 답은 정해져 있었다(답정너).. 프론트엔드로 시작해 언젠간 **MERN 스택**, UX 아는 척하기.
 
 나는 비주얼적인 것에 관심이 컸고, 평소 UX나 UI 관련 책이나 글들을 찾아 읽기도 했으며, 멋있는 웹 사이트를 보면 심장이 뛰고 만들어보고 싶다는 생각이 들었다. 그래서 **개발자로서의 첫 시작은 풀스택을 선망하는 프론트엔드**였음 했다. 
-<br>
-<br>
-![](https://images.velog.io/images/edie_ko/post/356e310e-9ad4-437c-93e3-254f3b8cc7a7/image.png)_(머리로 날아가는 비둘기를 만들고 있는 요즈음의 나.jpg)_
-<br>
-<br>
-## **어떻게 공부하고 있나?**
+<br />
+<br />
+<div className="Image__Small">
+  <img
+    src="https://images.velog.io/images/edie_ko/post/356e310e-9ad4-437c-93e3-254f3b8cc7a7/image.png"
+    title="Logo Title Text 1"
+    alt="Alt text"
+  />
+</div>
+
+_머리로 날아가는 비둘기를 만들고 있는 요즈음의 나.jpg_
+
+<br />
+<br />
+
+## 어떻게 공부하고 있나?
 
 코딩 공부에 있어서 삽질을 큰 가치로 삼고, **머리로 날든 날개로 날든 날아가는 새를 만들고 있다.** 매일매일 내 지적탐구심을 자극하는 일이 재밌다. 요즘 직장인들이 구몬 학습지를 푼다던데.. 나도 고등학생 때 언어랑 영어 공부하기 싫을 때 수학 문제 푸는 걸 좋아했던 시절이 있었다. 알고리즘을 풀면 그때 노스탤지어가 확 오는 게... ~~풀어 재끼는 맛이 좋다~~.
 
@@ -65,20 +88,27 @@ _(만약 이 글을 보고 있는 예비 위코더들이 있다면.. 저는 그 
 바닐라 자바스크립트로 자기소개 페이지를 만들기도 했고, 투두리스트도 여러 버전으로 만들어 보았다. 계산기도 만들고 이런저런 게임도 만들며 흥미를 느꼈다. HTTP 책 한 권을 공부했고.. Gulp로 SCSS도 건드렸고 React로 해빗 트랙커 같은 걸 만들었다. **그동안의 삽질이 조금이나마(아니 큰) 도움이 되었다..!**
 
 본격적으로 위코드에 와서는 딱 2주 동안 HTML, CSS, JavaScript를 배웠고, 이제 React를 배운 지 2주가 되었다. 많은 삽질이 날 성장시키고 있다. 아마 미래의 나도 오늘의 나에게 이런 말을 하겠지. 최대한 많은 삽질을 해보고 다음의 삽질을 시작하라고.
-<br>
-<br>
-## 앞으로 **어떤 개발자가 되고 싶은가?**
+<br />
+<br />
+
+## 앞으로 어떤 개발자가 되고 싶은가?
 
 - **개발자로서 자바스크립트로 끝장을 보고 싶다!** 얼른 React를 익히고 Redux, React Native를 하고 싶다. React developer로서 내실을 충분히 다지고 node.js, Express.js, MongoDB를 배워 MERN 스택으로 넘어가고 싶다.
 - 인생 살면서 내 영역에서 스페셜리스트가 되어 보고 싶었다. 내 전문성으로 안정적인 수익 모델을 만들고 누군가에게 인생의 기반이 될 수 있는 터전을 만들어주고 싶다.
 - 이전의 짧은 회사 생활에서 가장 행복했던 순간은 사람들과 얽힌 기억들이었다. 그 돈을 버는 현장에서 나에게 최고의 쾌감과 기쁨을 줬던 건 돈이 아니라 사람들과 부대끼며 나눴던 소통이었다. 유저와 동료들 간의 소통을 어떤 방식으로 풀어내야 할지 고민하는 개발자가 되고 싶다.
-<br><br><br>
+<br /><br /><br />
 
-![](https://images.velog.io/images/edie_ko/post/c85cf605-3252-4459-ba1c-cffb87032a8d/image.png)
+<div className="Image__Small">
+  <img
+    src="https://images.velog.io/images/edie_ko/post/c85cf605-3252-4459-ba1c-cffb87032a8d/image.png"
+    title="Logo Title Text 1"
+    alt="Alt text"
+  />
+</div>
 
 _(2020년 9월부터 잘 자라고 있는 Github 잔디들..jpg)_
 
-## **앞으로의 마음가짐**
+## 앞으로의 마음가짐
 
 - **작지만 꾸준히**
 
@@ -95,11 +125,20 @@ _(2020년 9월부터 잘 자라고 있는 Github 잔디들..jpg)_
 - **요행을 바라지 않기**
 
 노력하면 할 수 있다는 말은 클리셰다. 일만 시간의 법칙이 성립하는 것은 1%의 재능이라는 것도 이해하고 있다. 하지만 나의 근본은 복세편살과는 거리가 멀다. 내가 살아오면서 열심히 노력한 것의 결과는 항상 결코 뻔하지 않았던 경험 덕분이다. ‘노력하면 성공할 거야!’라는 생각보단 그저 그게 삶의 옳은 방향이라고 믿기에 **노력하는 개발자**가 되겠다.
-<br><br><br>
+<br /><br /><br />
 
 마지막으로 혹시나 보고 있을.. 우리 14기.. 매일 같이 불철주야 고생이 많습니다. 힘냅시다! 여러분 존재만으로도 제 인생이 풍요롭고 덕분에 해피 코딩하고 있어요. 여러분들이 있어서 힘들어도 해피티얼스 코딩합니다😂 감사합니다! 
 
 이 세상의 모든 개발자 인생 만세! (내 인생도 힘내라!)
-<br><br><br>
-![](https://images.velog.io/images/edie_ko/post/77b07c80-9833-49b9-8f52-9b3cacabde43/image.png)
-(위코드에 일찍 온 어느 날.jpg)
+
+
+<div className="Image__Small">
+  <img
+    src="https://images.velog.io/images/edie_ko/post/77b07c80-9833-49b9-8f52-9b3cacabde43/image.png"
+    title="Logo Title Text 1"
+    alt="Alt text"
+  />
+</div>
+
+_위코드에 일찍 온 어느 날.jpg_
+
