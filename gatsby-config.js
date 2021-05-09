@@ -4,7 +4,7 @@ module.exports = {
     name: `Positive Ko`,
     siteUrl: `https://positiveko.netlify.app`,
     description: `스스로 얼마나 부족한지 고해성사하는 주니어 개발자의 회고 블로그.`,
-    image: "content/authors/authors/avatars/edieko.jpeg",
+    image: "https://avatars.githubusercontent.com/u/69200669?v=4",
     hero: {
       heading: `虎視牛行 | 호시우행`,
       maxWidth: 652,
