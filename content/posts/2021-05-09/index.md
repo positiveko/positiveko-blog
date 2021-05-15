@@ -4,6 +4,7 @@ author: Positive Ko
 date: 2021-05-09
 hero: ./images/hero.jpg
 excerpt: 자바스크립트 닌자 비급 3장 요약
+slug: whats-diff-of-functional-language
 ---
 
 ## 1. 함수형 언어는 무엇이 다른가?
@@ -274,3 +275,4 @@ forEach(weapons, function(index) {
     - '메서드'로 호출: 콘텍스트는 그 메서드를 소유한 객체이다.
     - '생성자'로 호출: 콘텍스트는 새로 생성된 객체이다.
     - 'apply() call()'로 호출: 콘텍스트는 어떤 객체든 원하는 것으로 지정할 수 있다.
+
