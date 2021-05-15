@@ -131,7 +131,7 @@ const SEO: React.FC<HelmetProps> = ({
         "logo": {
           "@type": "ImageObject",
           "@id": "${site.siteUrl}/#logo",
-          "inLanguage": "en-US",
+          "inLanguage": "ko-KR",
           "url": "${site.siteUrl}/icons/icon-512x512.png",
           "width": 512,
           "height": 512,
@@ -150,7 +150,7 @@ const SEO: React.FC<HelmetProps> = ({
         "publisher": {
           "@id": "${site.siteUrl}/#organization"
         },
-        "inLanguage": "en-US"
+        "inLanguage": "ko-KR"
       },
       {
         "@type": [
@@ -166,7 +166,7 @@ const SEO: React.FC<HelmetProps> = ({
           "@id": "${site.siteUrl}/#organization"
         },
         "description": "${description || site.description}",
-        "inLanguage": "en-US"
+        "inLanguage": "ko-KR"
       },
       {
         "@type": "BreadcrumbList",
@@ -208,7 +208,7 @@ const SEO: React.FC<HelmetProps> = ({
         "logo": {
           "@type": "ImageObject",
           "@id": "${site.siteUrl}/#logo",
-          "inLanguage": "en-US",
+          "inLanguage": "ko-KR",
           "url": "${site.siteUrl}/icons/icon-512x512.png",
           "width": 512,
           "height": 512,
@@ -227,12 +227,12 @@ const SEO: React.FC<HelmetProps> = ({
         "publisher": {
           "@id": "${site.siteUrl}/#organization"
         },
-        "inLanguage": "en-US"
+        "inLanguage": "ko-KR"
       },
       {
         "@type": "ImageObject",
         "@id": "${articlepathName}/#primaryimage",
-        "inLanguage": "en-US",
+        "inLanguage": "ko-KR",
         "url": "${image}",
         "width": 1200,
         "height": 628
@@ -256,7 +256,7 @@ const SEO: React.FC<HelmetProps> = ({
         "breadcrumb": {
           "@id": "${articlepathName}/#breadcrumb"
         },
-        "inLanguage": "en-US"
+        "inLanguage": "ko-KR"
       },
       {
         "@type": "BreadcrumbList",
@@ -305,7 +305,7 @@ const SEO: React.FC<HelmetProps> = ({
         "image": {
           "@id": "${articlepathName}/#primaryimage"
         },
-        "inLanguage": "en-US"
+        "inLanguage": "ko-KR"
       },
       {
         "@type": [
@@ -316,7 +316,7 @@ const SEO: React.FC<HelmetProps> = ({
         "image": {
           "@type": "ImageObject",
         "@id": "${site.siteUrl}/#personlogo",
-          "inLanguage": "en-US",
+          "inLanguage": "ko-KR",
           "caption": "${authorName}"
         },
         "description": "${authorsBio}",
@@ -392,7 +392,7 @@ const SEO: React.FC<HelmetProps> = ({
   return (
     <Helmet
       title={title || site.title}
-      htmlAttributes={{ lang: 'en' }}
+      htmlAttributes={{ lang: 'ko' }}
       script={themeUIDarkModeWorkaroundScript}
       meta={metaTags}
     >
