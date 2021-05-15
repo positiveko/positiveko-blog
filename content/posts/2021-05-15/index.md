@@ -1,5 +1,5 @@
 ---
-title: JavaScript | 함수를 자유자재로 휘두르기
+title: JavaScript Function
 author: Positive Ko
 date: 2021-05-15
 hero: ./images/hero.jpg
