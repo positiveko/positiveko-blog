@@ -115,7 +115,7 @@ slug: customize-vscode-snippets
 그럼 아래 그림처럼 사용할 수 있게 됩니다.
 
 
-<div className="Image__Medium">
+<div className="Image__Small">
   <img
     src="./images/detail.gif"
     title="detail"
@@ -158,7 +158,7 @@ vscode에는 이미 다양한 스니펫 익스텐션이 많습니다.
 - jsx와 tsx에 적용: javascriptreact와 같이 끝에 react를 붙이면 됩니다.
 - TM_FILENAME_BASE: 파일의 이름을 그대로 받아오기 위해 사용합니다. 그러면 다음과 같이 적용할 수 있습니다.
   
-<div className="Image__Medium">
+<div className="Image__Small">
   <img
     src="./images/react.gif"
     title="react"

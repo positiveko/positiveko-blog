@@ -7936,6 +7936,14 @@ gatsby-plugin-feed@2.3.7:
     lodash.merge "^4.6.2"
     rss "^1.2.2"
 
+gatsby-plugin-google-analytics@^3.5.0:
+  version "3.5.0"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-google-analytics/-/gatsby-plugin-google-analytics-3.5.0.tgz#f0cb53730bf65d2e75581896f6811a3c95525370"
+  integrity sha512-HLByaS3U8tZtpoRs3hDx0fYX1jnmkhue4prsR7OKEj2pzAZUGMkbK5sDiugiHdxdx/b4/PKXjP5lQceUr3VAYA==
+  dependencies:
+    "@babel/runtime" "^7.12.5"
+    minimatch "3.0.4"
+
 gatsby-plugin-mailchimp@^5.1.2:
   version "5.2.2"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-mailchimp/-/gatsby-plugin-mailchimp-5.2.2.tgz#bed94cb70b9d91267329a5e6a0220e821d8ff6e8"
