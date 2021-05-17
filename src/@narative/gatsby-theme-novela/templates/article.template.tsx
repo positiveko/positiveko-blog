@@ -19,6 +19,7 @@ import ArticlesNext from "../sections/article/Article.Next";
 import ArticleSEO from "../sections/article/Article.SEO";
 import ArticleShare from "../sections/article/Article.Share";
 import ArticleFooter from './article.footer.template';
+import ArticleComments from '../sections/article/Article.Comments';
 
 import { Template } from "@types";
 
@@ -94,6 +95,7 @@ const Article: Template = ({ pageContext, location }) => {
       <ArticleBody ref={contentSectionRef}>
         <MDXRenderer content={article.body}>
           <ArticleShare />
+        <ArticleComments />
         </MDXRenderer>
       </ArticleBody>
       <ArticleFooter pageContext={pageContext} />
