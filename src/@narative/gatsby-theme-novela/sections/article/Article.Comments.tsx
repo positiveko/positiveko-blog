@@ -4,6 +4,7 @@ import { useColorMode } from 'theme-ui';
 
 export interface ICommentsProps {
   repo: string;
+  theme: string;
 }
 
 const utterancesSelector = 'iframe.utterances-frame';
@@ -24,7 +25,7 @@ const ArticleComments: React.FC<ICommentsProps> = () => {
         src: 'https://utteranc.es/client.js',
         repo: 'positiveko/positiveko-blog',
         'issue-term': 'pathname',
-        label: 'comment',
+        label: '✨💬 comments ✨',
         theme: 'github-light',
         crossOrigin: 'anonymous',
         async: 'true',

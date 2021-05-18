@@ -1,5 +1,5 @@
 ---
-title: tip | Custom VSCode Snippet 만들기
+title: Tips | Custom VSCode Snippet 만들기
 author: Positive Ko
 date: 2021-05-16
 hero: ./images/hero.jpeg
@@ -18,7 +18,7 @@ slug: customize-vscode-snippets
 
 ### 어떨 때 만들면 좋을까?
 
-- 블로그 포스팅을 위해 똑같은 prefix를 계속 달아주어야 할 때,
+- 블로그 포스팅을 위해 똑같은 frontmatter를 계속 달아주어야 할 때,
 - 리액트 컴포넌트 작성 시 'rsf', 'rsc'와 같은 컴포넌트 단축키 대신 스타일드 컴포넌트 까지 미리 작성 된 보일러플레이트 코드를 만들어 쓰고 싶을 때,
 - for loop과 같은 단순 폼을 빠르게 작성하고 싶을 때,
 
@@ -67,7 +67,7 @@ slug: customize-vscode-snippets
 
 ## 2. 마크다운을 위한 스니펫 만들기
 
-제 블로그는 포스트마다 정의된 형식의 prefix가 필요합니다.
+제 블로그는 포스트마다 정의된 형식의 frontmatter가 필요합니다.
 
 ```
 ---

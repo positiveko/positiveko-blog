@@ -95,7 +95,7 @@ const Article: Template = ({ pageContext, location }) => {
       <ArticleBody ref={contentSectionRef}>
         <MDXRenderer content={article.body}>
           <ArticleShare />
-        <ArticleComments />
+        <ArticleComments repo='positiveko/positiveko-blog' theme='github-light'/>
         </MDXRenderer>
       </ArticleBody>
       <ArticleFooter pageContext={pageContext} />

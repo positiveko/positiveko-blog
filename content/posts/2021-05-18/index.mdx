@@ -1,0 +1,193 @@
+---
+title: Mistakes | 주니어 리액트 개발자인 내가 실수하고 있었던 것 
+author: Positive Ko
+date: 2021-05-18
+hero: ./images/hero.jpg
+excerpt: 주니어 개발자 4개월차... 이대로 괜찮은가? 그동안 실수했던 것들을 반성하며 회고하는 시간을 갖습니다...😶
+slug: the-mistakes-i-made-as-a-junior-programmer
+secret: true
+---
+
+<h3> 주니어 리액트 개발자인 내가 실수하고 있었던 것</h3>
+
+<br />
+
+주니어 개발자 4개월차... 이대로 괜찮은가? <br />
+그동안 실수했던 것들을 반성하며 회고하는 시간을 갖습니다...😶
+
+조금은 부끄럽지만 계속 부끄러워지는 것보다 한번 부끄럽고 마는 것이 좋습니다. <br />
+파편적인 지식이라 이 또한 틀릴 수도 있습니다.<br />
+댓글로 틀린 내용에 대해서 말씀해주시면 5개월차 실수 모음집, 6개월차 실수 모음집을 만드는 데에 도움이 됩니다.
+
+<br />
+<br />
+
+### 1. 이전 상태를 기반으로 새로운 상태를 세팅하기
+
+새로운 상태는 이전 상태에 기반한 setState를 만들어서 업데이트 해야합니다. 그 이유는 setState이가 비동기적으로 작동해서 상태값을 batch(일정 시간 동안 변화하는 상태를 일괄 처리)로 변경하기 때문입니다.
+
+`Bad👎🏻`
+```jsx
+const [isState, setState] = useState(false);
+const toggleBtn = () => setState(!isState); // (x)
+
+return (
+  <Button onClick={toggleBtn} />
+)
+```
+
+
+`Good👍🏻` <br />
+아래와 같이 작성합니다.
+
+```jsx
+const [isState, setState] = useState(false);
+const toggleBtn = () => setState(isState => !isState); // (o)
+
+return (
+  <Button onClick={toggleBtn} />
+)
+```
+
+
+### 2. state 얉은 복사 
+
+리액트에선 state의 불변성을 지켜주고 setState 함수를 통해 상태 업데이트를 해주어야 합니다. 
+만약 state의 불변성을 지켜주지 않는다면 컴포넌트 렌더링이 무분별하게 일어날지도 모르고, 컴포넌트를 최적화하기 어려워지겠죠.
+
+
+```javascript
+const person = {
+  name: 'edie',
+  age: '77',
+  dateJoined: '2021-05-18',
+  language: {first: 'javascript', second: 'typescript'}
+}
+
+const copiedPerson = {...person};
+copiedPerson.language.first = 'python';
+
+console.log(person);
+console.log(copiedPerson);
+
+// {
+//   name: 'edie',
+//   age: '77',
+//   dateJoined: '2021-05-18',
+//   language: { first: 'python', second: 'typescript' }
+// }
+// {
+//   name: 'edie',
+//   age: '77',
+//   dateJoined: '2021-05-18',
+//   language: { first: 'python', second: 'typescript' }
+// }
+```
+
+person의 langauge.first가 python으로 바뀐 것이 보이시죠.
+이럴 땐 다음과 같이 바꾸어야 합니다.
+
+```javascript
+const copiedPerson = {...person};
+copiedPerson.language = {...person.language, first: 'python'};
+
+console.log(person);
+console.log(copiedPerson);
+
+// {
+//   name: 'edie',
+//   age: '77',
+//   dateJoined: '2021-05-18',
+//   language: { first: 'javascript', second: 'typescript' }
+// }
+// {
+//   name: 'edie',
+//   age: '77',
+//   dateJoined: '2021-05-18',
+//   language: { first: 'python', second: 'typescript' }
+// }
+```
+
+위처럼 참조 데이터 안에 또 다른 참조 데이터가 있을 땐, 그 분기점마다 스프레드 연산자를 사용해야 합니다.
+혹은 데이터 구조가 좀 더 복잡해진다면 `Immer.js`와 같은 라이브러리를 사용해서 상태의 불변성을 지키며 업데이트할 수도 있습니다.
+
+
+### 3. ?? Nullish Coalescing과 || OR operator
+
+흔히 value가 `undefined`나 `null`인 경우를 알기 위해 OR operator를 많이 씁니다.
+
+```javascript
+const value = undefined;
+console.log(value || 1); // 1
+console.log(value ?? 1); // 1
+
+const value1 = null;
+console.log(value1 || 1); // 1
+console.log(value1 ?? 1); // 1
+```
+
+이처럼 OR operator(||)는 좌측이 false인 경우, 우측의 값을 리턴합니다.
+그런데 undefined도 false이고 null도 false이지만, 0 또한 false입니다.
+따라서 다음처럼 ||와 ??를 구분해서 사용해야 합니다.
+
+```javascript
+const value2 = 0;
+console.log(value2 || 1); // 1
+console.log(value2 ?? 1); // 0
+```
+
+이처럼 Nullish coalescing operator(??)는 좌측이 undefined인 경우에만 우측의 값을 리턴하고, 0인 경우에는 0을 그대로 리턴합니다.
+
+### 4. JSON mock data 만들기
+
+JSON Mock data를 만들 때, 일일히 double quote를 치고 있던 제 모습이 기억납니다.
+그냥 JSON.stringify()를 쓰면 되는 걸...
+
+```javascript
+const person = {
+  name: 'edie',
+  age: '77',
+  dateJoined: '2021-05-18',
+  language: 'javascript'
+}
+
+// JSON.stringify(value, replacer, space)
+JSON.stringify(person, null, 2);
+
+// '{
+//   "name": "edie",
+//   "age": "77",
+//   "dateJoined": "2021-05-18",
+//   "language": "javascript"
+// }'
+```
+
+### 5. 컴포넌트에 true 표시 x, string 브라켓 x
+
+```jsx
+<Components disabled={true} /> // (x)
+<Components disabled /> // (o)
+
+<Components title={"제목"} /> // (x)
+<Components title={'제목'} /> // (x)
+<Components title={`제목`} /> // (x)
+<Components title="제목" /> // (o)
+```
+
+
+### 6. 여러 API 동시에 완료시키기
+
+
+### 7.. useEffect dependency array
+useEffect의 의존성을 낮추는 것.
+
+### 8. useCallback with useEffect
+
+https://itnext.io/write-clean-er-components-jsx-1e70491baded
+
+
+
+
+
+
+
