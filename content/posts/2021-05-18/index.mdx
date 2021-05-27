@@ -128,16 +128,21 @@ console.log(value1 ?? 1); // 1
 ```
 
 이처럼 OR operator(||)는 좌측이 false인 경우, 우측의 값을 리턴합니다.
-그런데 undefined도 false이고 null도 false이지만, **0 또한 false**입니다.
-따라서 다음처럼 ||와 ??를 구분해서 사용해야 합니다.
+그런데 undefined도 false이고 null도 false이지만, **0 또한 false이고 '' 또한 false**입니다.
+따라서 값에 0이나 ''가 들어올 수도 있는 경우 다음처럼 ||와 ??를 구분해서 사용해야 합니다.
 
 ```javascript
 const value2 = 0;
 console.log(value2 || 1); // 1
 console.log(value2 ?? 1); // 0
+
+const value3 = '';
+console.log(value3 || null); // null
+console.log(value3 ?? null); // ''
 ```
 
-이처럼 Nullish coalescing operator(??)는 좌측이 undefined인 경우에만 우측의 값을 리턴하고, 0인 경우에는 0을 그대로 리턴합니다.
+이처럼 Nullish coalescing operator(??)는 좌측이 undefined인 경우에만 우측의 값을 리턴하고, 그 외에 경우에는 그대로 리턴합니다.
+
 
 ### 4. JSON mock data 만들기
 
@@ -180,8 +185,8 @@ JSON.stringify(person, null, 2);
 
 ### 6. 여러 API 동시에 완료시키기
 
-한 개의 컴포넌트 안에서 API 3개~12개 까지 연결해야 하는 상황이라면 첫 번째의 response와 마지막 열두 번째의 response까지 텀이 발생해서 순차적으로 view가 뜨는 문제가 발생할 수 있습니다.
-한 번에 모든 view를 띄울 수 없을까 고민하다가 사용하게 된 것은 Promise.all과 Promise.allSettled이었습니다.
+한 개의 컴포넌트 안에서 여러개의 API를 연결해야 하는 상황이라면 첫 번째의 response와 마지막 열두 번째의 response까지 텀이 발생해서 순차적으로 view가 뜨는 문제가 발생할 수 있습니다.
+한 번에 12개의 API를 연결해야하는 컴포넌트에서 모든 view를 한꺼번에 띄울 수 없을까 고민하다가 사용하게 된 것은 Promise.all과 Promise.allSettled이었습니다.
 
 Promise.all, Promise.allSettled 둘 다 모두 array 안에 있는 모든 request가 resolved 되면 결과를 return합니다. 차이점은 Promise.all은 중간에 하나의 request가 rejected 되면 모든 request의 실행이 중단되고 다음의 request는 실행되지 않지만, Promise.allSettled는 하나가 rejected 되더라도 모든 request가 실행되고 결과를 return한다는 점입니다.
 
@@ -265,6 +270,6 @@ export default PracticeComponent;
 ### 마무리
 정리한 실수는 여기까지 입니다. <br />
 이보다 더 많은 실수들이 있지만 내용을 보다 더 자세하게 담고 싶은 생각에 다른 포스트로 업데이트를 해보려합니다.
-읽어주셔서 감사합니다. 
+읽어주셔서 감사합니다😇
 
 
