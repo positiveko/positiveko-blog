@@ -1,5 +1,5 @@
 ---
-title: CSS | 눈동냥으로 얻은 괜찮은 CSS 트릭 모음집
+title: CSS | last-child는 이제 쓰지 맙시다
 author: Positive Ko
 date: 2021-05-29
 hero: ./images/hero.jpeg
