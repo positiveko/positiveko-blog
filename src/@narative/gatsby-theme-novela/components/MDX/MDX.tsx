@@ -18,6 +18,7 @@ import Tables from '@components/Tables';
 import { ImageZoom } from '@components/Image';
 import Figcaption from '@components/Figcaption';
 import Emphasizing from '@components/Emphasizing';
+import Annotation from '@components/Annotation';
 import * as shortcodes from '@blocks/kit';
 import mediaqueries from '@styles/media';
 import { toKebabCase } from '@utils';
@@ -44,7 +45,8 @@ const components = {
   th: Tables.HeadCell,
   td: Tables.Cell,
   figcaption: Figcaption,
-  emphasizing: Emphasizing
+  emphasizing: Emphasizing,
+  annotation: Annotation
 };
 
 interface MDXProps {
