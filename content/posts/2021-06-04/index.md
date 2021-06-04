@@ -3,7 +3,7 @@ title: JavaScript | 프로토타입 Prototype
 author: Positive Ko
 date: 2021-06-04
 hero: ./images/hero.jpeg
-excerpt: JavaScript의 프로토타입에 대해서 알아봅니다.
+excerpt: <자바스크립트 닌자 비급> 6장을 읽고서 JavaScript의 프로토타입에 대해서 정리해봅니다.
 slug: javascript-prototype
 ---
 
