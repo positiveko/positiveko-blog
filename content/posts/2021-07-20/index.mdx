@@ -1,0 +1,99 @@
+---
+title: Tip | 모바일 브라우저에서 100vh 적용 오류 해결 (ios/android)
+author: Positive Ko
+date: 2021-07-20
+hero: ./images/hero.png
+excerpt: 100vh가 PC 웹에서는 제대로 작용하나 모바일 웹에서 제대로 적용되지 않는 문제를 JavaScript과 CSS로 해결해봅니다.
+slug: 100vh-error-with-mobile-web
+---
+
+# 문제 상황
+반응형 웹을 구축하던 도중, `100vh`가 PC 웹에서는 제대로 작용하나 모바일 웹에서 제대로 적용되지 않는 문제를 발견했습니다.
+
+vh는 viewport height에 해당하는 단위로 해당 브라우저의 높이에 따라서 상대적으로 적용되는 단위입니다.
+예를 들어, 화면의 높이가 100px이라면 1vh는 1px이 됩니다.
+
+하지만 모바일에서는 상단에 위치한 url바와 하단에 있는 네이게이션바로 인해서 100vh를 설정하더라도 아래 혹은 윗 부분이 잘리는 현상이 발생합니다.
+상하단에 위치한 바 아래로 화면이 감춰져버리는 것이죠..
+![](https://images.velog.io/images/edie_ko/post/7e7e7dcc-61d2-43a8-997f-70b4133ee666/image.png)
+
+# 원인
+![](https://images.velog.io/images/edie_ko/post/e44ac5cd-8d7a-4320-ae8f-64e86883e39b/image.png) _(image from [The trick to viewport units on mobile](https://css-tricks.com/the-trick-to-viewport-units-on-mobile/))_
+- url바는 상황에 따라 보여지거나 없어지는 경우가 있습니다. url바가 가변할 수 있는 데에 비해서, 100vh는 그에 따라 다시 측정되지 않습니다.
+- ios safari 브라우저의 경우, 상단의 노치와 url바 혹은 하단의 툴바로 인해 화면의 크기(viewport)를 실제 보여지는 윈도우 innerHeight보다 크게 잡습니다. 그래서 document의 height을 100vh로 잡아 작성하더라도 실제 safari 모바일 화면에서는 스크롤바가 생깁니다.
+
+# 해결
+
+### 1) 자바스크립트 + CSS로 해결
+
+먼저 `vh`를 선언해줍니다. 
+리액트의 경우에는 useEffect로 화면이 처음 렌더링 되었을 때 `vh`를 `window.innerHeight*0.01` 에 맞추어 세팅되도록 선언해줍니다. 그리고 document의 스타일에 `--vh`라는 프로퍼티로 만들어 둔 `vh`를 값으로 넣어줍니다.
+```
+let vh = 0;
+
+useEffect(() => {
+  vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty('--vh', `${vh}px`);
+}, []);
+```
+
+
+스타일은 아래와 같이 적용합니다.
+```
+height: 100vh (❌😵)
+
+height: calc(var(--vh, 1vh) * 100); (👌🏻✨)
+```
+
+혹은 브라우저가 리사이즈될 여지가 있다면 다음과 같이 작성해도 됩니다.
+```
+const setVh = () => {
+  document.documentElement.style.setProperty('--vh', `${window.innerHeight}px`)
+};
+window.addEventListener('resize', setVh);
+setVh();
+```
+그리고 스타일은 아래처럼 작성합니다.
+```
+:root {
+   --vh: 100%;
+}
+
+html,
+body {
+    height: 100vh;
+    height: var(--vh);
+}
+```
+
+아래 사진을 보면 좌측이 문제 상황, 우측이 해결된 상황입니다.
+하단 네비게이션 바에 가려져서 보이지 않던 저장 버튼이 제대로 화면의 끝에 위치한 것을 볼 수 있습니다.
+![](https://images.velog.io/images/edie_ko/post/2dc96f15-fd46-44eb-9e42-8da74b55cb83/image.png)
+
+저는 JS와 CSS로 해결했지만, 아래와 같은 방법도 있다고 합니다.
+
+
+### 2) CSS로 해결
+![](https://images.velog.io/images/edie_ko/post/49cecaa6-9e1f-4a50-bd81-26bdf29d2017/image.png) _(image from [4 things in web development I've learned in 2020, so far](https://dev.to/cydstumpel/4-things-in-web-development-i-ve-learned-in-2020-so-far-3cg))_
+
+`-webkit-fill-available`이라는 프로퍼티로 해결하는 방법이 있습니다. 
+![](https://images.velog.io/images/edie_ko/post/343edc57-df5d-4136-b66c-7ada601836e1/image.png) _(image from https://twitter.com/allthingssmitty/status/1254151507412496384)_
+
+적용할 대상에 다음과 같이 CSS를 작성합니다.
+```
+min-height: 100vh;
+min-height: -webkit-fill-available; 
+```
+
+혹은 아래와 같이 적용해봅니다.
+```
+height: 100vh;
+height: -webkit-fill-available;
+height: fill-available;
+```
+
+
+### reference
+[The trick to viewport units on mobile](https://css-tricks.com/the-trick-to-viewport-units-on-mobile/) <br />
+[100vh problem with iOS Safari](https://medium.com/quick-code/100vh-problem-with-ios-safari-92ab23c852a8)<br />
+[4 things in web development I've learned in 2020, so far](https://dev.to/cydstumpel/4-things-in-web-development-i-ve-learned-in-2020-so-far-3cg)
