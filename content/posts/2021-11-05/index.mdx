@@ -9,6 +9,9 @@ slug: js-this
 
 this는 볼 때마다 새롭다.
 내가 이 글을 다 써갈 때 쯤이면.. 더이상 this를 헷갈려하지 않을 수 있을까..?
+마지막에는 this와 관련한 다양한 실전 문제를 모아봤다.
+문제를 풀어보고 틀린 부분이 있다면 다시 관련한 부분을 찾아서 보도록 하자.
+
 참고로 이 글은 [앞선 글 - 자바스크립트의 실행 컨텍스트란 무엇인가요?](https://positiveko.netlify.app/javascript-execution-context)에 이어지는 글입니다.
 
 # 1. 그렇다면 this는 무엇이냐?
@@ -520,6 +523,204 @@ foo.call(null); // 2
 따라서 this 바인딩을 알기 위해서는 **어디서 어떻게 함수를 호출하는지** 찾고,
 위의 순서에 따라 this가 무엇을 가리키는지 예측해보자.
 
+# 5. this 문제 풀이
+
+본인이 확실하게 이해한 건지 확인할 수 있는 문제를 추가해보았다.
+아래 문제를 보면서 console.log에는 어떻게 나올지 예상해보자.
+답은 제일 마지막에 한꺼번에 적겠다.
+
+#### 1번
+```js
+var name = 'edie';
+
+var user = {
+  name: 'meng',
+  getName: function() {
+    console.log(this.name); // (1)
+
+    var inner = function() {
+      console.log(this.name); // (2)
+    };
+    inner();
+  },
+};
+
+user.getName();
+```
+
+#### 2번
+```js
+var name = 'edie';
+
+var user = {
+  name: 'meng',
+  getName: function() {
+    console.log(this.name);
+  },
+  age: 30,
+  child: {
+    age: 15,
+    underTwenty: function() {
+      return this.age < 20;
+    },
+  },
+};
+
+user.getName(); // (1)
+user.child.underTwenty(); // (2)
+user.parentUnderTwenty = user.child.underTwenty;
+user.parentUnderTwenty(); // (3)
+```
+
+#### 3번
+```js
+const object = {
+  message: 'Hello, World!',
+  getMessage() {
+    const message = 'Hey, World!';
+    return this.message;
+  },
+};
+console.log(object.getMessage());
+```
+
+#### 4번
+```js
+function Person(name) {
+  this.name = name;
+  this.getName = () => this.name;
+}
+const person = new Person('Edie');
+console.log(person.getName());
+const { getName } = person;
+console.log(getName());
+```
+
+#### 5번
+```js
+const obj = {
+  name: 'edie',
+  sayHi() {
+    console.log(`hi, ${this.name}`);
+  },
+};
+setTimeout(obj.sayHi, 1000);
+```
+
+#### 6번. 아래에 콘솔에 'edie'가 로그되려면 어떻게 코드를 수정해야 할까?
+```js
+const person = {
+  name: 'edie',
+};
+
+function sayHi() {
+  console.log(this.name); // 'edie'
+}
+```
+
+#### 7번
+```js
+const obj = {
+  who: 'edie',
+  sayHi() {
+    return `hi, ${this.who}!`;
+  },
+  sayBye: () => {
+    return `goobye, ${this.who}!`;
+  },
+};
+console.log(obj.sayHi());
+1;
+console.log(obj.sayBye());
+2;
+```
+
+#### 8번
+```js
+var length = 1;
+function callback() {
+  console.log(this.length);
+}
+
+const object = {
+  length: 2,
+  method1(callback) {
+    callback();
+  },
+  methods2: (callback) => callback(),
+};
+object.method1(callback); // (1)
+object.methods2(callback); // (2)
+```
+
+#### 9번
+```js
+var length = 2;
+function callback() {
+  console.log(this.length);
+}
+
+const obj = {
+  length: 3,
+  method1() {
+    arguments[0]();
+  },
+  method2(callback) {
+    callback();
+  },
+  method3: (callback) => {
+    callback();
+  },
+  method4() {
+    callback();
+  },
+};
+obj.method1(callback, '1', '2', '3', '4'); // (1)
+obj.method2(callback, '1', '2', '3', '4'); // (2)
+callback.bind(obj)(); // (3)
+obj.method3(callback); // (4)
+obj.method4(); // (5)
+```
+
+#### 정답
+```js
+1.
+(1) 'meng' (2) 'edie'
+2.
+(1) 'meng (2) true (3) false
+3.
+'Hello, World!'
+4.
+(1)'Edie' (2) 'Edie'
+5.
+'hi, '
+6.
+(방법 1) person property에 sayHi를 추가해서 person.sayHi() 호출
+const person = {
+  name: 'edie',
+  sayHi
+};
+
+function sayHi() {
+  console.log(this.name); // 'edie'
+};
+
+person.sayHi();
+
+(방법 2) call, apply, bind 활용하여 명시적 바인딩
+sayHi.call(person);
+sayHi.apply(person);
+sayHi.bind(person)();
+
+7.
+(1)'hi, edie!'
+(2)'goobye, undefined!'
+8.
+(1) 1 (2) 1
+9.
+(1) 5 (2) 2 (3) 3 (4) 2 (5) 2
+```
+
 <br />
 <br />
 <br />
@@ -529,3 +730,4 @@ foo.call(null); // 2
 - 이웅모, <모던 자바스크립트 Deep Dive>
 - 정재남, <코어 자바스크립트>
 - 카일 심슨, <You don't know JS>
+- [7 Interview Questions on "this" keyword in JavaScript. Can You Answer Them?](https://dmitripavlutin.com/javascript-this-interview-questions/)
