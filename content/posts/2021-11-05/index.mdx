@@ -2,7 +2,7 @@
 title: 자바스크립트의 this는 김춘수의 <꽃>이다
 author: Positive Ko
 date: 2021-11-05
-hero: ./images/hero.jpeg
+hero: ./images/hero.png
 excerpt: 그동안 헷갈리지 않은 척했던 자바스크립트의 this를 제대로 정리합니다.
 slug: js-this
 ---
@@ -236,6 +236,7 @@ console.log(obj);
 위와 같은 유사배열 뿐만 아니라 arguments 객체, Node 선택자로 생성된 NodeList도 이런 방식으로 배열 처럼 사용할 수 있다.
 
 ### 3-3) bind 메서드
+
 > func.bind(thisArg[, arg1[, arg2[, ...]]])
 
 bind 메서드는 apply, call과는 달리 함수를 호출하지 않고 this로 사용할 객체만 전달한다.
@@ -257,31 +258,33 @@ foo.bind(obj)(); // { a: 2 }
 ```
 
 bind는 다음과 같이 메서드 내부의 중첩 함수 또는 콜백 함수의 this가 일치하지 않는 문제를 해결할 수 있다.
+
 ```js
 const person = {
   name: 'edie',
   foo(callback) {
     setTimeout(callback, 100);
-  }
+  },
 };
 person.foo(function() {
-  console.log(`hi, i'm ${this.name}`); // "hi, i'm " 
+  console.log(`hi, i'm ${this.name}`); // "hi, i'm "
   // 일반 함수로 호출된 콜백 함수 내부의 this는 전역객체다. (window.name)
   // 따라서 this.name이 출력되지 않았다.
-})
+});
 ```
 
 아래와 같이 bind로 callback에 this를 명시해줌으로써 해결할 수 있다.
+
 ```js
 const person = {
   name: 'edie',
   foo(callback) {
     setTimeout(callback.bind(person), 100);
-  }
+  },
 };
 person.foo(function() {
   console.log(`hi, i'm ${this.name}`); // "hi, i'm edie"
-})
+});
 ```
 
 ## 4) 생성자 함수 호출 (new 바인딩)
@@ -467,6 +470,7 @@ person.sayHi(); // hi edie
 ```
 
 ## 3-2. 별도의 인자로 this를 받는 경우 (thisArg)
+
 콜백 함수를 인자로 받는 메서드 중 일부에 경우 추가로 this로 지정할 객체(thisArg)를 인자로 지정할 수 있는 경우가 있다.
 이러한 메서드의 thisArg 값을 지정하면 콜백 함수 내부에서 this값을 원하는 대로 변경할 수 있다.
 주로 배열 메서드(forEach, map, filter, some, every, find, findIndex, flatMap)가 많으며
@@ -476,23 +480,25 @@ Set과 Map의 일부 메서드(forEach)에도 포함된다.
 const report = {
   sum: 0,
   count: 0,
-  add: function () {
+  add: function() {
     const args = Array.prototype.slice.call(arguments);
     args.forEach(function(entry) {
       this.sum += entry;
       ++this.count;
       // this를 thisArg로 넣어주었다.
     }, this);
-  }
-}
+  },
+};
 
 report.add(2, 4, 6);
 console.log(report.sum, report.count);
 ```
 
 ## 3-3. call, apply, bind에 첫 번째 인자로 null | undefined를 넘기는 경우
+
 call, apply, bind에 첫 번째 인자로 null | undefined를 넘기는 경우 this바인딩이 무시되고
 기본 바인딩 규칙이 적용된다.
+
 ```js
 function foo() {
   console.log(this.a);
@@ -505,12 +511,13 @@ foo.call(null); // 2
 
 이제까지 this의 다양한 바인딩에 대해 정리해보았다. 그런데 만약 여러 개의 규칙이 중복으로 적용된 경우엔 어떻게 알 수 있을까?
 그때는 우선순위가 높은 this binding을 기준으로 확인하면 된다.
+
 - 1등: new의 호출로 새로 생성된 객체
 - 2등: call, apply, bind로 주어진 객체
 - 3등: 호출의 주체인 콘텍스트 객체로 호출된 경우 그 콘텍스트 객체
 - 4등: 기본 바인딩인 경우 'strict mode'인 경우 undefined, 'non-strict mode'에서는 전역 객체
 
-따라서 this 바인딩을 알기 위해서는 **어디서 어떻게 함수를 호출하는지** 찾고, 
+따라서 this 바인딩을 알기 위해서는 **어디서 어떻게 함수를 호출하는지** 찾고,
 위의 순서에 따라 this가 무엇을 가리키는지 예측해보자.
 
 <br />
