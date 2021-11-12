@@ -191,16 +191,16 @@ foo(obj); // undefined
 
 ```js
 function plus(num) {
-  this.count++;
+  this.count += num;
 }
 plus.count = 0;
+
 for (i = 0; i < 10; i++) {
-  if (i > 5) {
+  if (i < 5) {
     plus.call(plus, i);
   }
 }
-
-console.log(plus.count); // 4
+console.log(plus.count); // 10
 ```
 
 ### 3-2) apply 메서드
@@ -467,7 +467,7 @@ function Person(name) {
   this.name = name;
 }
 
-Person.prototype.sayHi = function() => { console.log(`hi ${this.name}`); };
+Person.prototype.sayHi = function() { console.log(`hi ${this.name}`); };
 const Person = new Person('edie');
 person.sayHi(); // hi edie
 ```
